@@ -1,2 +1,2 @@
 ### Hi there 👋
-# La función summarize_contents() recibe un archivo de GenBank, hace un resumen y distribuye las anotaciones.
+# La función summarize_contents() recibe un archivo con formato de GenBank (.gb) e imprime las anotaciones del archivo.

@@ -32,9 +32,10 @@ if __name__=="__main__":
 #///////////////////////////////////////////////////////////////////////
 from Bio.Seq import Seq
 
+secuencia1 = Seq("GATCGATGGGCCTATATAGGATCGAAAATCGC")
+secuencia2 = Seq("GACGTACCTATGTATAGCGATACGTTAGCTAC")
+
 def concatenate_and_get_reverse_of_complement(secuencia1, secuencia2):
-    secuencia1 = Seq("GATCGATGGGCCTATATAGGATCGAAAATCGC")
-    secuencia2 = Seq("GACGTACCTATGTATAGCGATACGTTAGCTAC")
     secuencia = secuencia1 + secuencia2
     print(secuencia.reverse_complement())
 concatenate_and_get_reverse_of_complement(secuencia1, secuencia2)

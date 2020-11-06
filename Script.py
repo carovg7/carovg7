@@ -28,3 +28,13 @@ def summarize_contents(filename):
 if __name__=="__main__":
 	resultado = summarize_contents(filename)
 	print(resultado)
+
+#///////////////////////////////////////////////////////////////////////
+from Bio.Seq import Seq
+
+def concatenate_and_get_reverse_of_complement(secuencia1, secuencia2):
+    secuencia1 = Seq("GATCGATGGGCCTATATAGGATCGAAAATCGC")
+    secuencia2 = Seq("GACGTACCTATGTATAGCGATACGTTAGCTAC")
+    secuencia = secuencia1 + secuencia2
+    print(secuencia.reverse_complement())
+concatenate_and_get_reverse_of_complement(secuencia1, secuencia2)

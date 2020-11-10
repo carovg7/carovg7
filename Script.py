@@ -37,5 +37,7 @@ secuencia2 = Seq("GACGTACCTATGTATAGCGATACGTTAGCTAC")
 
 def concatenate_and_get_reverse_of_complement(secuencia1, secuencia2):
     secuencia = secuencia1 + secuencia2
-    print(secuencia.reverse_complement())
+    rev_com = secuencia.reverse_complement()
+    return rev_com
+    print(rev_com)
 concatenate_and_get_reverse_of_complement(secuencia1, secuencia2)

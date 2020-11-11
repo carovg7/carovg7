@@ -50,3 +50,32 @@ class MipruebaRV(unittest.TestCase):
                 secuencia2 = Seq("CGTCAACGTACGATACGTACG")
                 s=Script.concatenate_and_get_reverse_of_complement(secuencia1, secuencia2)
                 self.assertEqual("CGTACGTATCGTACGTTGACGACGTTATGCGACGTAGTGTCA", s)
+#/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7/
+#Función de prueba para print_protein_and_stop_codon_using_standard_table()
+from Bio.Seq import Seq
+class MipruebaPP(unittest.TestCase):
+        #start codon al principio, último codón stop codon
+        def test_print_protein_and_stop_codon_using_standard_table(self):
+                cadena = "ATGTCACTTACTTACTCACAGTCTTAA"
+                r=Script.print_protein_and_stop_codon_using_standard_table(cadena)
+                self.assertEqual({'mRNA': Seq('AUGUCACUUACUUACUCACAGUCUUAA'), 'Proteins': Seq('MSLTYSQS'), 'Stop codon': Seq('TAA')}, r)
+        def test_print_protein_and_stop_codon_using_standard_table(self):
+                cadena = "TTGTCTCGTAATTATTCACCGTCTTGA"
+                r=Script.print_protein_and_stop_codon_using_standard_table(cadena)
+                self.assertEqual({'mRNA': Seq('UUGUCUCGUAAUUAUUCACCGUCUUGA'), 'Proteins': Seq('LSRNYSPS'), 'Stop codon': Seq('TGA')}, r)
+        #start codon y stop codon juntos
+        def test_print_protein_and_stop_codon_using_standard_table(self):
+                cadena = "ACCATGTGACTTAGGCATCAA"
+                r=Script.print_protein_and_stop_codon_using_standard_table(cadena)
+                self.assertEqual({'mRNA': Seq('ACCAUGUGACUUAGGCAUCAA'), 'Proteins': Seq('M'), 'Stop codon': Seq('TGA')}, r)
+        #start codon en medio de la secuencia
+        def test_print_protein_and_stop_codon_using_standard_table(self):
+                cadena = "GCTATCTTGACGGACTGA"
+                r=Script.print_protein_and_stop_codon_using_standard_table(cadena)
+                self.assertEqual({'mRNA': Seq('GCUAUCUUGACGGACUGA'), 'Proteins': Seq('LTD'), 'Stop codon': Seq('TGA')}, r)
+        #stop codon antes del start codon (no se encuentra proteína)
+        def test_print_protein_and_stop_codon_using_standard_table(self):
+                cadena = "TAAATGCTTACGTAG"
+                r=Script.print_protein_and_stop_codon_using_standard_table(cadena)
+                self.assertEqual({'mRNA': Seq('UAAAUGCUUACGUAG'), 'Proteins': Seq('MLT'), 'Stop codon': Seq('TAA')}, r)
+

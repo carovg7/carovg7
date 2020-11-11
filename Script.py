@@ -68,3 +68,26 @@ r = print_protein_and_stop_codon_using_standard_table(cadena)
 print(r)
 
 #////////////////////////////////////////////////////////////////
+from Bio.Data import CodonTable
+
+cadena = "ATATCCACTTAA"
+def print_proteins_and_codons_using_mitocondrial_yeast_table(cadena):
+    secuencia = Seq(cadena)
+    diccionario = {}
+    mrna = secuencia.transcribe()
+    diccionario['mRNA'] = mrna
+    for i in range(len(secuencia)):
+            if((secuencia[i*3:i*3+3] == 'ATA') or (secuencia[i*3:i*3+3] == 'ATG') or (secuencia[i*3:i*3+3] == 'GTG')):
+                proteins = secuencia[i*3:].translate(table = 3, to_stop = True)
+                diccionario['Proteins'] = proteins
+
+                for j in range(len(secuencia)):
+                    if((secuencia[j*3:j*3+3] == 'TAA') or (secuencia[j*3:j*3+3] == 'TAG')):
+                        diccionario['Stop codon'] = secuencia[j*3:j*3+3]
+                        break
+
+            if(i+1 == len(secuencia)):
+                break
+    return diccionario
+r = print_proteins_and_codons_using_mitocondrial_yeast_table(cadena)
+print(r)

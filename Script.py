@@ -41,6 +41,7 @@ def concatenate_and_get_reverse_of_complement(secuencia1, secuencia2):
     return rev_com
     print(rev_com)
 concatenate_and_get_reverse_of_complement(secuencia1, secuencia2)
+<<<<<<< HEAD
 
 #/////////////////////////////////////////////////////////////////////
 from Bio.Seq import Seq
@@ -69,3 +70,5 @@ print(r)
 
 #//////////////////////////////////////////////////////////////////
 
+=======
+>>>>>>> a2dab37edf75bc31e3f845bb13fd4cc9bf10b614

@@ -21,3 +21,32 @@ class Miprueba(unittest.TestCase):
 		s=Script.summarize_contents("/home/carolina/carovg7/data/m_cold.fasta")
 		self.assertEqual("\nfile: m_cold.fasta\npath: /home/carolina/carovg7/data\nnum_records: 1\nrecord(s): \n- id: gi|8332116|gb|BE037100.1|BE037100\nname: gi|8332116|gb|BE037100.1|BE037100\ndescription: gi|8332116|gb|BE037100.1|BE037100 MP14H09 MP Mesembryanthemum crystallinum cDNA 5' similar to cold acclimation protein, mRNA sequence", s)
 
+#//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#Función de prueba para concatenate_and_get_reverse_of_complement()
+from Bio.Seq import Seq
+class MipruebaRV(unittest.TestCase):
+        def test_concatenate_and_get_reverse_of_complement(self):
+                secuencia1= Seq("GATCGATGGGCCTATATAGGA")
+                secuencia2 = Seq("GACGTACCTATGTATAGCGAT")
+                s=Script.concatenate_and_get_reverse_of_complement(secuencia1, secuencia2)
+                self.assertEqual("ATCGCTATACATAGGTACGTCTCCTATATAGGCCCATCGATC", s)
+        def test_concatenate_and_get_reverse_of_complement(self):
+                secuencia1= Seq("ATCACGTGCTACGCAATCTAG")
+                secuencia2 = Seq("TAGTCTTTCGTGAATGCAACG")
+                s=Script.concatenate_and_get_reverse_of_complement(secuencia1, secuencia2)
+                self.assertEqual("CGTTGCATTCACGAAAGACTACTAGATTGCGTAGCACGTGAT", s)
+        def test_concatenate_and_get_reverse_of_complement(self):
+                secuencia1= Seq("TAAGGCTGCACTGACTAACGT")
+                secuencia2 = Seq("CTGACTACAGTCAGACTGACG")
+                s=Script.concatenate_and_get_reverse_of_complement(secuencia1, secuencia2)
+                self.assertEqual("CGTCAGTCTGACTGTAGTCAGACGTTAGTCAGTGCAGCCTTA", s)
+        def test_concatenate_and_get_reverse_of_complement(self):
+                secuencia1= Seq("ACGATCGTAACTGCATCGATC")
+                secuencia2 = Seq("GCATCACTGACGAATGCGCAT")
+                s=Script.concatenate_and_get_reverse_of_complement(secuencia1, secuencia2)
+                self.assertEqual("ATGCGCATTCGTCAGTGATGCGATCGATGCAGTTACGATCGT", s)
+        def test_concatenate_and_get_reverse_of_complement(self):
+                secuencia1= Seq("TGACACTACGTCGCATAACGT")
+                secuencia2 = Seq("CGTCAACGTACGATACGTACG")
+                s=Script.concatenate_and_get_reverse_of_complement(secuencia1, secuencia2)
+                self.assertEqual("CGTACGTATCGTACGTTGACGACGTTATGCGACGTAGTGTCA", s)

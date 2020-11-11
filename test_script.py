@@ -79,3 +79,27 @@ class MipruebaPP(unittest.TestCase):
                 r=Script.print_protein_and_stop_codon_using_standard_table(cadena)
                 self.assertEqual({'mRNA': Seq('UAAAUGCUUACGUAG'), 'Proteins': Seq('MLT'), 'Stop codon': Seq('TAA')}, r)
 
+#///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#Función de prueba para print_proteins_and_codons_using_mitocondrial_yeast_table()
+from Bio.Data import CodonTable
+class MipruebaPY(unittest.TestCase):
+        def test_print_proteins_and_codons_using_mitocondrial_yeast_table(self):
+                cadena = "ATATCCACTTAA"
+                y=Script.print_proteins_and_codons_using_mitocondrial_yeast_table(cadena)
+                self.assertEqual({'mRNA': Seq('AUAUCCACUUAA'), 'Proteins': Seq('MST'), 'Stop codon': Seq('TAA')}, y)
+        def test_print_proteins_and_codons_using_mitocondrial_yeast_table(self):
+                cadena = "GTGTACCTACTCTAG"
+                y=Script.print_proteins_and_codons_using_mitocondrial_yeast_table(cadena)
+                self.assertEqual({'mRNA': Seq('GUGUACCUACUCUAG'), 'Proteins': Seq('VYTT'), 'Stop codon': Seq('TAG')}, y)
+        def test_print_proteins_and_codons_using_mitocondrial_yeast_tablee(self):
+                cadena = "ATTATATAAGCC"
+                y=Script.print_proteins_and_codons_using_mitocondrial_yeast_table(cadena)
+                self.assertEqual({'mRNA': Seq('AUUAUAUAAGCC'), 'Proteins': Seq('M'), 'Stop codon': Seq('TAA')}, y)
+        def test_print_proteins_and_codons_using_mitocondrial_yeast_table(self):
+                cadena = "ACCGCCATGTTAGCAGCCTAA"
+                y=Script.print_proteins_and_codons_using_mitocondrial_yeast_table(cadena)
+                self.assertEqual({'mRNA': Seq('ACCGCCAUGUUAGCAGCCUAA'), 'Proteins': Seq('MLAA'), 'Stop codon': Seq('TAA')}, y)
+        def test_print_proteins_and_codons_using_mitocondrial_yeast_table(self):
+                cadena = "AGGTAGTGGATGCTGACTTAA"
+                y=Script.print_proteins_and_codons_using_mitocondrial_yeast_table(cadena)
+                self.assertEqual({'mRNA': Seq('AGGUAGUGGAUGCUGACUUAA'), 'Proteins': Seq('MTT'), 'Stop codon': Seq('TAG')}, y)

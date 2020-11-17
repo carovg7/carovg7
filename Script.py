@@ -91,3 +91,17 @@ def print_proteins_and_codons_using_mitocondrial_yeast_table(cadena):
     return diccionario
 r = print_proteins_and_codons_using_mitocondrial_yeast_table(cadena)
 print(r)
+#///////////////////////////////////////////////////////////////////////////
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+from Bio import SeqIO
+
+filename = "/home/carolina/data/sequences.fasta"
+def extract_sequences(filename):
+    param = list(SeqIO.parse(filename, "fasta"))
+    for i, record in enumerate(param):
+        c = open(f'sequences{i}.fasta', 'w')
+        c.write(f'>{record.id}\n')
+        c.write(f'{record.seq}')
+        c.close()
+extract_sequences(filename)

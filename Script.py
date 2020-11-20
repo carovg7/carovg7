@@ -105,3 +105,16 @@ def extract_sequences(filename):
         c.write(f'{record.seq}')
         c.close()
 extract_sequences(filename)
+#//////////////////////////////////////////////////////////////////////////
+#FUNCIÓN PARA EL REVERSO COMPLEMENTARIO, DEVUELVE UN ARCHIVO
+
+filename = "/home/carolina/data/sequences.fasta"
+def extract_sequences_revcomp(filename):
+    param = list(SeqIO.parse(filename, "fasta"))
+  #for i, record in enumerate(param):
+    c = open(f'sequences_revcomp.fasta', 'w')
+    for i, record in enumerate(param):
+        c.write(f'>{record.id}\n')
+        c.write(f'{record.seq.reverse_complement()}\n')
+    c.close()
+extract_sequences_revcomp(filename)

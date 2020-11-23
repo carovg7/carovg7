@@ -103,3 +103,10 @@ class MipruebaPY(unittest.TestCase):
                 cadena = "AGGTAGTGGATGCTGACTTAA"
                 y=Script.print_proteins_and_codons_using_mitocondrial_yeast_table(cadena)
                 self.assertEqual({'mRNA': Seq('AGGUAGUGGAUGCUGACUUAA'), 'Proteins': Seq('MTT'), 'Stop codon': Seq('TAG')}, y)
+#////////////////////////////////////////////////////////////////////////////
+#FUNCIÓN DE PRUEBA PARA EXTRACT_SEQUENCES
+class MipruebaES1(unittest.TestCase):
+    def test_extract_sequences(self):
+        filename = "/home/carolina/data/sequences.fasta"
+        x=Script.extract_sequences(filename)
+        self.assertEqual(837, x)

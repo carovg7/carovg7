@@ -110,3 +110,12 @@ class MipruebaES1(unittest.TestCase):
         filename = "/home/carolina/data/sequences.fasta"
         x=Script.extract_sequences(filename)
         self.assertEqual(837, x)
+#///////////////////////////////////////////////////////////////////////////
+#FUNCIÓN DE PRUEBA PARA EXTRACT_SEQUENCES_REVCOM
+class MipruebaRCF(unittest.TestCase):
+    def test_extract_sequences_revcomp(self):
+        filename = "/home/carolina/data/sequences.fasta"
+        rv=Script.extract_sequences_revcomp(filename)
+        self.assertEqual(837, rv)
+#///////////////////////////////////////////////////////////////////////////7
+

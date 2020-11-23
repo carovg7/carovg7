@@ -92,18 +92,22 @@ def print_proteins_and_codons_using_mitocondrial_yeast_table(cadena):
 r = print_proteins_and_codons_using_mitocondrial_yeast_table(cadena)
 print(r)
 #///////////////////////////////////////////////////////////////////////////
+#FUNCIÓN QUE DADO UN ARCHIVO FASTA CON MÚLTIPLES SECUENCIAS, IMPRIME UN ARCHIVO FASTA PARA CADA RECORD
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
 
 filename = "/home/carolina/data/sequences.fasta"
 def extract_sequences(filename):
+    cont_files = 0
     param = list(SeqIO.parse(filename, "fasta"))
     for i, record in enumerate(param):
         c = open(f'sequences{i}.fasta', 'w')
         c.write(f'>{record.id}\n')
         c.write(f'{record.seq}')
         c.close()
+        cont_files = cont_files + 1
+    return cont_files
 extract_sequences(filename)
 #//////////////////////////////////////////////////////////////////////////
 #FUNCIÓN PARA EL REVERSO COMPLEMENTARIO, DEVUELVE UN ARCHIVO
@@ -111,10 +115,27 @@ extract_sequences(filename)
 filename = "/home/carolina/data/sequences.fasta"
 def extract_sequences_revcomp(filename):
     param = list(SeqIO.parse(filename, "fasta"))
-  #for i, record in enumerate(param):
     c = open(f'sequences_revcomp.fasta', 'w')
     for i, record in enumerate(param):
         c.write(f'>{record.id}\n')
         c.write(f'{record.seq.reverse_complement()}\n')
     c.close()
+    numrecords = len(param)
+    return numrecords
 extract_sequences_revcomp(filename)
+#/////////////////////////////////////////////////////////////////////////
+#FUNCIÓN QUE DADO UN FILE FASTA, IMPRIME SUS RECORDS POR SEPARADO EN FORMATO GBK
+filename = "/home/carolina/data/sequences.fasta"
+salida = "genbank"
+def extract_sequences(filename, salida):
+    SeqIO.convert(filename, "fasta", "sequences.gbk", "genbank", molecule_type = "protein")
+    param = list(SeqIO.parse("sequences.gbk", "genbank"))
+    cont_files = 0
+    for i, record in enumerate(param):
+        c = open(f"sequences{i}.gbk", "w")
+        c.write(record.format("genbank"))
+        c.close()
+        cont_files = cont_files + 1
+    return cont_files
+extract_sequences(filename, salida)
+#////////////////////////////////////////////////////////////////////////////

@@ -98,17 +98,18 @@ from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
 
 filename = "/home/carolina/data/sequences.fasta"
-def extract_sequences(filename):
+salida = "genbank"
+def extract_sequences(filename,salida):
     cont_files = 0
-    param = list(SeqIO.parse(filename, "fasta"))
+    SeqIO.convert(filename, "fasta", "sequences.gbk", "genbank", molecule_type = "protein")
+    param = list(SeqIO.parse("sequences.gbk", salida))
     for i, record in enumerate(param):
-        c = open(f'sequences{i}.fasta', 'w')
-        c.write(f'>{record.id}\n')
-        c.write(f'{record.seq}')
+        c = open(f'sequences{i}.gbk', 'w')
+        c.write(record.format("genbank"))
         c.close()
         cont_files = cont_files + 1
     return cont_files
-extract_sequences(filename)
+extract_sequences(filename,salida)
 #//////////////////////////////////////////////////////////////////////////
 #FUNCIÓN PARA EL REVERSO COMPLEMENTARIO, DEVUELVE UN ARCHIVO
 
@@ -124,18 +125,3 @@ def extract_sequences_revcomp(filename):
     return numrecords
 extract_sequences_revcomp(filename)
 #/////////////////////////////////////////////////////////////////////////
-#FUNCIÓN QUE DADO UN FILE FASTA, IMPRIME SUS RECORDS POR SEPARADO EN FORMATO GBK
-filename = "/home/carolina/data/sequences.fasta"
-salida = "genbank"
-def extract_sequences(filename, salida):
-    SeqIO.convert(filename, "fasta", "sequences.gbk", "genbank", molecule_type = "protein")
-    param = list(SeqIO.parse("sequences.gbk", "genbank"))
-    cont_files = 0
-    for i, record in enumerate(param):
-        c = open(f"sequences{i}.gbk", "w")
-        c.write(record.format("genbank"))
-        c.close()
-        cont_files = cont_files + 1
-    return cont_files
-extract_sequences(filename, salida)
-#////////////////////////////////////////////////////////////////////////////
